@@ -20,7 +20,7 @@ getWeather = () => {
                }
                else {
                 error.innerHTML = ''
-                fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&appid=fcf986e2bc92f5bdfd5194ab438b6ee8`)
+                fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&appid=fcf986e2bc92f5bdfd5194ab438b6ee8`)
         .then( response => response.json())
         .then (data => {
                 console.log(data);
