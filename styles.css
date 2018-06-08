@@ -15,6 +15,7 @@ body{
 .info {
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
 }
 
 .btn {
@@ -24,4 +25,8 @@ body{
 
 #error {
 color: red;
+}
+.container {
+    display: flex;
+    justify-content: center;
 }

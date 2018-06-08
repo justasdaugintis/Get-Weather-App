@@ -36,7 +36,7 @@ getWeather = () => {
                         if (data) {
 // displaying some parameters
                                 name.innerHTML = data.city.name + ", " + data.city.country
-                                cloudiness.innerHTML = data.list[0].weather[0].description;
+                                //cloudiness.innerHTML = data.list[0].weather[0].description;
                                 temperature.innerHTML = Math.floor(data.list[0].main.temp) + "°C"
                                 humidity.innerHTML = "Humidity: " + data.list[0].main.humidity + "%"
 
