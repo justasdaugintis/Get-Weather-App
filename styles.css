@@ -1,32 +1,42 @@
 *{ 
-    margin: 10px;
-  
+    margin: 3px;
+    padding: 5px;
 }
 body{
     background: rgb(137, 199, 214);
+   
 }
 
 .form-control {
     width: 200px;
     padding: 10px;
-    margin: 10px;
+    margin: 20px;
 }
 
 .info {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
+    margin-left: 1px;
 }
-
+.temp {
+   
+}
 .btn {
+    padding: 10px;
+    margin: 20px;
     background: #1289A7;
     border-color:  #1289A7;
+    height: 50px;
+    width: 100px;
 }
 
 #error {
 color: red;
 }
-.container {
+
+footer{
+    margin-top: 320px;
     display: flex;
-    justify-content: center;
+   justify-content: center;
 }
+

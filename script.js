@@ -12,7 +12,8 @@ getWeather = () => {
                 let wind = document.getElementById('wind');
                 let windSpeed = document.getElementById('windSpeed');
                 let images = document.getElementById('pic');
-              
+                images.style = "width: 100px;"
+                images.style = "height:100px"
 
                if(e.value === '') {
                 error.innerHTML = "Please type in a city"
@@ -103,43 +104,43 @@ getWeather = () => {
 
 //wind speed parameters logic/display
                                 if (data.list[0].wind.speed < 0.3 ) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + " Calm"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Calm"
                                 }
                                 else if (data.list[0].wind.speed <= 1.5 && data.list[0].wind.speed >= 0.3) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + " Light Air"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Light Air"
                                 }
                                 else if (data.list[0].wind.speed <= 3.3 && data.list[0].wind.speed >= 1.6) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + " Light Breeze"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Light Breeze"
                                 }
                                 else if (data.list[0].wind.speed <= 5.5 && data.list[0].wind.speed >= 3.4) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + " Gentle Breeze" 
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Gentle Breeze" 
                                 }
                                 else if (data.list[0].wind.speed <= 7.9 && data.list[0].wind.speed >= 5.5) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + " Moderate Breeze"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Moderate Breeze"
                                 }
                                 else if (data.list[0].wind.speed <= 10.7 && data.list[0].wind.speed >= 8) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + " Fresh Breeze"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Fresh Breeze"
                                 }
                                 else if (data.list[0].wind.speed <= 13.8 && data.list[0].wind.speed >= 10.8) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + " Strong Breeze"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Strong Breeze"
                                 }
                                 else if (data.list[0].wind.speed <= 17.1 && data.list[0].wind.speed >= 13.9) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + " High Wind"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " High Wind"
                                 }
                                 else if (data.list[0].wind.speed <= 20.7 && data.list[0].wind.speed >= 17.2) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + "Gale, Fresh Gale"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Gale, Fresh Gale"
                                 }
                                 else if (data.list[0].wind.speed <= 24.4 && data.list[0].wind.speed >= 20.8) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + "Strong/Severe Gale"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Strong/Severe Gale"
                                 }
                                 else if (data.list[0].wind.speed <= 28.4 && data.list[0].wind.speed >= 24.5) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + "Storm, Whole Gale"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Storm, Whole Gale"
                                 }
                                 else if (data.list[0].wind.speed <= 32.6 && data.list[0].wind.speed >= 28.5) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + "Violent Storm"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Violent Storm"
                                 }
                                 else if (data.list[0].wind.speed >= 32.7) {
-                                        windSpeed.innerHTML = "Speed: " + data.list[0].wind.speed + " m/s" + "Hurricane Force"
+                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Hurricane Force"
                                 }
                             
                                
