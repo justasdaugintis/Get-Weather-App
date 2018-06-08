@@ -43,31 +43,31 @@ getWeather = () => {
 
 // Weather icon display logic
                                 if (data.list[0].weather[0].description === "clear sky"){
-                                        images.src = "doc/images/sun.svg"
+                                        images.src = "docs/images/sun.svg"
                                         images.display = "block";
                                 }
                                 else if (data.list[0].weather[0].description === "scattered clouds"){
-                                        images.src = "doc/images/clouds.svg"
+                                        images.src = "docs/images/clouds.svg"
                                         images.display = "block";
                                 }
                                 else if (data.list[0].weather[0].description === "rain"){
-                                        images.src = "doc/images/rain.svg"
+                                        images.src = "docs/images/rain.svg"
                                         images.display = "block";
                                 }
                                 else if (data.list[0].weather[0].description  === "few clouds"){
-                                        images.src = "doc/images/cloud-sun.svg"
+                                        images.src = "docs/images/cloud-sun.svg"
                                         images.display = "block";
                                 }
                                 else if (data.list[0].weather[0].description  === "shower rain"){
-                                        images.src = "doc/images/cloud-rain.svg"
+                                        images.src = "docs/images/cloud-rain.svg"
                                         images.display = "block";
                                 }
                                 else if (data.list[0].weather[0].description  === "moderate rain"){
-                                        images.src = "doc/images/cloud-drizzle.svg"
+                                        images.src = "docs/images/cloud-drizzle.svg"
                                         images.display = "block";
                                 }
                                 else if (data.list[0].weather[0].description  === "light rain"){
-                                        images.src = "doc/images/cloud-drizzle.svg"
+                                        images.src = "docs/images/cloud-drizzle.svg"
                                         images.display = "block";
                                 }
 
