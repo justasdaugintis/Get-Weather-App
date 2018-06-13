@@ -1,4 +1,4 @@
-function windSpeedMessage (windVel){
+function windSpeedMessagefunc (windVel){
         windSpeedMessage = "Wind speed: " + windVel + "m/s ";
         //values are max speeds of a category
         windSpeeds =    [[0.3, "Calm"],
@@ -47,7 +47,7 @@ function updateWeather(data){
         images.display = "flex";
         humidity.innerHTML = "Humidity: " + data.list[0].main.humidity + "%"
         wind.innerHTML = windDirectionMessage(data.list[0].wind.deg);
-        windSpeed.innerHTML = windSpeedMessage(data.list[0].wind.speed);
+        windSpeed.innerHTML = windSpeedMessagefunc(data.list[0].wind.speed);
         //cloudiness.innerHTML = data.list[0].weather[0].description;
 }
 
