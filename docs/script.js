@@ -27,7 +27,7 @@ function windDirectionMessage(windDeg){
         windDirections = ["North", "North East", "East", "South East", "South",
                         "South West", "West", "North West", "North"]
         windIndex = Math.round((windDeg/45));
-        windMessage += windDirections[windIndex];
+        windMessage = windDirections[windIndex];
         return windMessage;
 }
 
