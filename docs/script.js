@@ -11,15 +11,16 @@ getWeather = () => {
                 let windSpeed = document.getElementById('windSpeed');
                 let images = document.getElementById('pic');
                 
-                images.style = "width: 100px;"
-                images.style = "height:100px"
+                images.style = "width: 110px"
+                images.style = "height: 110px"
 
-               if(e.value === '') {
+        if(e.value === '') {
                 error.innerHTML = "Please type in a city"
                }
-               else {
+        else {
                 error.innerHTML = ''
-                fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&appid=fcf986e2bc92f5bdfd5194ab438b6ee8`)
+                var apiKey = 'fcf986e2bc92f5bdfd5194ab438b6ee8'
+        fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&appid=${apiKey}`)
         .then( response => response.json())
         .then (data => {
                 console.log(data);
