@@ -1,8 +1,4 @@
-getWeather = () => {
-        document.getElementById("submit").addEventListener("click", function (){
-                const e = document.getElementById("input");
-                let value = e.value;
-                let error = document.getElementById("error");
+updateWeather = (data) => {
                 let name = document.getElementById("city");
                 let cloudiness = document.getElementById("cloudiness");
                 let temperature = document.getElementById('temperature');
@@ -10,9 +6,44 @@ getWeather = () => {
                 let wind = document.getElementById('wind');
                 let windSpeed = document.getElementById('windSpeed');
                 let images = document.getElementById('pic');
-                
                 images.style = "width: 110px"
                 images.style = "height: 110px"
+                name.innerHTML = data.city.name + ", " + data.city.country
+                cloudiness.innerHTML = data.list[0].weather[0].description;
+                temperature.innerHTML = Math.floor(data.list[0].main.temp) + "°C"
+                humidity.innerHTML = "Humidity: " + data.list[0].main.humidity + "%"
+                images.src = "http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png"
+                wind.innerHTML = windDir(data.list[0].wind.deg)
+                windSpeed.innerHTML = "Wind Speed: " + data.list[0].wind.speed + " m/s " + " - " + windMessage(data.list[0].wind.speed)
+}
+
+function windDir(deg){
+        let direction = ["North", "North East", "East", "South East", "South", "South West", "West", "North West", "North"];
+        let message = "Wind direction: ";
+        let index = Math.round(deg/45);
+        message += direction[index];
+        return message;
+}       
+
+
+function windMessage(speed){
+        let wind = [[0.3, "Calm"],[1.5, "Light Air"], [3.3, "Light Breeze"], [5.5, "Gentle Breeze"],
+        [7.9, "Moderate Breeze"], [10.7, "Fresh Breeze"], [13.8, "Strong Breeze"], [17.1, "High Wind"], 
+        [20.7, "Gale, Fresh Gale"],  [24.4, "Strong/Sever Gale"], [28.4, "Storm, Whole Gale"], 
+        [32.6, "Violent Storm"], [32.7, "Hurricane Force"] ];   
+        let i = 0
+        while (speed > wind[i][0] && i < wind.length ) {
+                i++
+        };    
+        return wind[i][1];
+}
+
+
+getWeather = () => {
+        document.getElementById("submit").addEventListener("click", function (){
+                const e = document.getElementById("input");
+                let value = e.value;
+                let error = document.getElementById("error");
 
         if(e.value === '') {
                 error.innerHTML = "Please type in a city"
@@ -24,105 +55,15 @@ getWeather = () => {
         .then( response => response.json())
         .then (data => {
                 console.log(data);
-                
-
                 if (data.message === "city not found"){
                         error.innerHTML = "City not found"
-
                 }
                 else {
                         error.innerHTML = ''
                 }
-                updateWeather = () => {
-                        if (data) {
-// displaying some parameters
-                                name.innerHTML = data.city.name + ", " + data.city.country
-                                cloudiness.innerHTML = data.list[0].weather[0].description;
-                                temperature.innerHTML = Math.floor(data.list[0].main.temp) + "°C"
-                                humidity.innerHTML = "Humidity: " + data.list[0].main.humidity + "%"
-                                images.src = "http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png"
-
-   
-//Wind parameters logic/display
-                                if(data.list[0].wind.deg > 30 && data.list[0].wind.deg < 60){
-                                        wind.innerHTML = "Wind direction: North East"
-                                }
-                                else if (data.list[0].wind.deg > 60 && data.list[0].wind.deg < 120){
-                                        wind.innerHTML = "Wind direction: East"
-                                }
-                                else if (data.list[0].wind.deg > 120 && data.list[0].wind.deg < 150){
-                                        wind.innerHTML = "Wind direction: South East"
-                                }
-
-                                else if (data.list[0].wind.deg > 150 && data.list[0].wind.deg < 210){
-                                        wind.innerHTML = "Wind direction: South"
-                                }
-
-                                else if (data.list[0].wind.deg > 210 && data.list[0].wind.deg < 240){
-                                        wind.innerHTML = "Wind direction: South West"
-                                }
-                                else if (data.list[0].wind.deg > 240 && data.list[0].wind.deg < 300){
-                                        wind.innerHTML = "Wind direction: West"
-                                }
-
-                                else if (data.list[0].wind.deg > 300 && data.list[0].wind.deg < 330){
-                                        wind.innerHTML = "Wind direction: North West"
-                                }
-                                else if (data.list[0].wind.deg > 330 || data.list[0].wind.deg < 30 ){
-                                        wind.innerHTML = "Wind direction: North"
-                                }
-                                
-
-//wind speed parameters logic/display
-                                if (data.list[0].wind.speed < 0.3 ) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Calm"
-                                }
-                                else if (data.list[0].wind.speed <= 1.5 && data.list[0].wind.speed >= 0.3) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Light Air"
-                                }
-                                else if (data.list[0].wind.speed <= 3.3 && data.list[0].wind.speed >= 1.6) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Light Breeze"
-                                }
-                                else if (data.list[0].wind.speed <= 5.5 && data.list[0].wind.speed >= 3.4) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Gentle Breeze" 
-                                }
-                                else if (data.list[0].wind.speed <= 7.9 && data.list[0].wind.speed >= 5.5) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Moderate Breeze"
-                                }
-                                else if (data.list[0].wind.speed <= 10.7 && data.list[0].wind.speed >= 8) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Fresh Breeze"
-                                }
-                                else if (data.list[0].wind.speed <= 13.8 && data.list[0].wind.speed >= 10.8) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " Strong Breeze"
-                                }
-                                else if (data.list[0].wind.speed <= 17.1 && data.list[0].wind.speed >= 13.9) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + " High Wind"
-                                }
-                                else if (data.list[0].wind.speed <= 20.7 && data.list[0].wind.speed >= 17.2) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Gale, Fresh Gale"
-                                }
-                                else if (data.list[0].wind.speed <= 24.4 && data.list[0].wind.speed >= 20.8) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Strong/Severe Gale"
-                                }
-                                else if (data.list[0].wind.speed <= 28.4 && data.list[0].wind.speed >= 24.5) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Storm, Whole Gale"
-                                }
-                                else if (data.list[0].wind.speed <= 32.6 && data.list[0].wind.speed >= 28.5) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Violent Storm"
-                                }
-                                else if (data.list[0].wind.speed >= 32.7) {
-                                        windSpeed.innerHTML = "Wind speed: " + data.list[0].wind.speed + " m/s" + "Hurricane Force"
-                                }
-                            
-                               
-                        }
-
-                
-                
+                if(data){
+                updateWeather (data);
                 }
-         
-                
-                updateWeather ();
         })
 }
         });

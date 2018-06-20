@@ -6,19 +6,27 @@ body{
     background: rgb(137, 199, 214);
    
 }
-
+img {
+    position: absolute;
+    left: 80px;
+    top: -25px;
+}
 .form-control {
     width: 200px;
     padding: 10px;
     margin: 20px;
 }
-
+.title{
+    margin-left: -50px;
+}
 .info {
     display: flex;
     flex-direction: column;
     margin-left: 1px;
 }
 .temp {
+    display:flex;
+    flex-direction: row;
    
 }
 .btn {
@@ -39,4 +47,9 @@ footer{
     display: flex;
    justify-content: center;
 }
-
+.main {
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+    margin-left: 200px;
+}
