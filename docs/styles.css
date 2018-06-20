@@ -9,7 +9,7 @@ body{
 img {
     position: relative;
     left: 80px;
-    top: -85px;
+    top: -90px;
    
 }
 .form-control {
@@ -55,3 +55,4 @@ footer{
     margin-left: 50px;
     margin-bottom: 50px;
 }
+

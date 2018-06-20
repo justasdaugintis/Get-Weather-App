@@ -26,7 +26,6 @@ function windDir(deg){
         return message
 }       
 
-
 function windMessage(speed){
         let wind = [[0.3, "Calm"],[1.5, "Light Air"], [3.3, "Light Breeze"], [5.5, "Gentle Breeze"],
         [7.9, "Moderate Breeze"], [10.7, "Fresh Breeze"], [13.8, "Strong Breeze"], [17.1, "High Wind"], 
@@ -38,7 +37,6 @@ function windMessage(speed){
         };    
         return wind[i][1]
 }
-
 
 getWeather = () => {
         document.getElementById("submit").addEventListener("click", function (){
@@ -62,10 +60,14 @@ getWeather = () => {
                         error.innerHTML = ''
                 }
                 if(data){
-                updateWeather (data);
+                updateWeather(data);
+               
                 }
         })
 }
         });
 }
-                getWeather();
+
+getWeather();
+
+               
