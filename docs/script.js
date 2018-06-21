@@ -17,7 +17,7 @@ updateWeather = (data) => {
                 windSpeed.innerHTML = "Wind Speed: " + data.list[0].wind.speed + " m/s " + " - " + windMessage(data.list[0].wind.speed)
 }
 
-function windDir(deg){
+windDir = (deg) => {
         let direction = ["North", "North East", "East", "South East", 
                         "South", "South West", "West", "North West", "North"]
         let message = "Wind direction: "
@@ -26,7 +26,7 @@ function windDir(deg){
         return message
 }       
 
-function windMessage(speed){
+ windMessage = (speed) => {
         let wind = [[0.3, "Calm"],[1.5, "Light Air"], [3.3, "Light Breeze"], [5.5, "Gentle Breeze"],
         [7.9, "Moderate Breeze"], [10.7, "Fresh Breeze"], [13.8, "Strong Breeze"], [17.1, "High Wind"], 
         [20.7, "Gale, Fresh Gale"],  [24.4, "Strong/Sever Gale"], [28.4, "Storm, Whole Gale"], 
@@ -40,7 +40,7 @@ function windMessage(speed){
 
 getWeather = () => {
         document.getElementById("submit").addEventListener("click", function (){
-                const e = document.getElementById("input")
+                let e = document.getElementById("input")
                 let value = e.value
                 let error = document.getElementById("error")
         if(e.value === '') {
@@ -48,21 +48,18 @@ getWeather = () => {
                }
         else {
                 error.innerHTML = ''
-                var apiKey = 'fcf986e2bc92f5bdfd5194ab438b6ee8'
+                let apiKey = 'fcf986e2bc92f5bdfd5194ab438b6ee8'
         fetch(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=${value}&units=metric&appid=${apiKey}`)
         .then( response => response.json())
         .then (data => {
                 console.log(data);
-                if (data.message === "city not found"){
+                if (data.cod != 200){
                         error.innerHTML = "City not found"
                 }
                 else {
                         error.innerHTML = ''
                 }
-                if(data){
                 updateWeather(data);
-               
-                }
         })
 }
         });
